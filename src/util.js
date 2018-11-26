@@ -34,4 +34,8 @@ const allocateBotSymbol = function(playerSymbol) {
   return symbols[index];
 }
 
-module.exports = { allocateBotSymbol };
+const isSubset = function(superset,subset) {
+  return subset.every( element => superset.includes(element) );
+}
+
+module.exports = { allocateBotSymbol,isSubset };
