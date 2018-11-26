@@ -38,4 +38,8 @@ const isSubset = function(superset,subset) {
   return subset.every( element => superset.includes(element) );
 }
 
-module.exports = { allocateBotSymbol,isSubset };
+const isValidMove = function(totalMoves,userMove) {
+  return (!totalMoves.includes(userMove));
+}
+
+module.exports = { allocateBotSymbol,isSubset,isValidMove };

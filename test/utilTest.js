@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { allocateBotSymbol,isSubset } = require('../src/util.js');
+const { allocateBotSymbol,isSubset,isValidMove } = require('../src/util.js');
 
 describe( 'allocateBotSymbol' , function() {
   it( 'should allocate symbol O for bot if player symbol is X' , function () {
@@ -21,3 +21,12 @@ describe( 'isSubset' , function() {
   });
 })
 
+describe( 'isValidMove' ,function() {
+  it( 'should return true if the userMove is valid' , function() {
+    assert.equal(isValidMove([1,2,3],4),true);
+  });
+
+  it( 'should return false if the userMove is invalid' , function() {
+    assert.equal(isValidMove([1,2,3],2),false);
+  });
+})
