@@ -1,6 +1,6 @@
 const read = require('readline-sync');
 
-getPlayerDetails = function() {
+const getPlayerDetails = function() {
   let gameDetails = { firstPlayer : {} , secondPlayer : {} };
   gameDetails.firstPlayer.name = enterName(); 
   gameDetails.firstPlayer.symbol = enterSymbol();
@@ -25,6 +25,22 @@ const enterSymbol = function() {
     symbol = read.question('\nIncorrect symbol!! please choose symbol "O" or "X" : ');
   }
   return symbol;
+}
+
+const getUserMove = function(player) {
+  let userMove = read.question(player+' choose box between 1 to 9 : ');
+  return JSON.parse(userMove);
+
+}
+
+const playBot = function(remainingMoves) {
+  let botMove = 0;
+  while(!remainingMoves.includes(botMove)) {
+    botMove = Math.ceil(Math.random()*10);
+  }
+  let index = remainingMoves.indexOf(botMove);
+  remainingMoves.splice(index,1);
+  return botMove;
 }
 
 const allocateBotSymbol = function(playerSymbol) {
@@ -64,4 +80,4 @@ const welcomePlayer = function() {
   console.log('\nwelcome to TIC TAC TOE\n');
 }
 
-module.exports = { makeUserMove,makeBotMove,welcomePlayer,allocateBotSymbol,isSubset,isValidMove };
+module.exports = { playBot,getUserMove,getPlayerDetails,makeUserMove,makeBotMove,welcomePlayer,allocateBotSymbol,isSubset,isValidMove };

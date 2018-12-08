@@ -1,4 +1,4 @@
-const { makeUserMove,makeBotMove,allocateBotSymbol,getPlayerDetails,getUserMove,isValidMove,playBot,hasWon } = require('./util.js');
+const { playBot,getUserMove,getPlayerDetails,makeUserMove,makeBotMove,welcomePlayer,allocateBotSymbol,isSubset,isValidMove } = require('./util.js');
 
 const displayBoard = function(boardDetails) {
   console.log("\n\n "+boardDetails[1]+" | "+boardDetails[2]+" | "+boardDetails[3]);
@@ -56,3 +56,5 @@ const playNow = function(gameDetails) {
     }
   }
 }
+
+exports.startGame = startGame;
