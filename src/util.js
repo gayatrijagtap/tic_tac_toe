@@ -58,4 +58,10 @@ const makeBotMove = function(gameDetails,botMove) {
   return gameDetails;
 }
 
+
+const welcomePlayer = function() {
+  console.clear();
+  console.log('\nwelcome to TIC TAC TOE\n');
+}
+
 module.exports = { allocateBotSymbol,isSubset,isValidMove };
