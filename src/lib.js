@@ -7,3 +7,14 @@ const displayBoard = function(boardDetails) {
   console.log("---+---+---");
   console.log(" "+boardDetails[7]+" | "+boardDetails[8]+" | "+boardDetails[9]+"\n\n");
 }
+
+let winningCombinations = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
+
+const hasWon = function(gameDetails) {
+  for(let combination of winningCombinations) {
+    if(isSubset(gameDetails.moves,combination)) {
+      console.log(gameDetails.name+" has WON!!");
+      process.exit();
+    }
+  }
+}
