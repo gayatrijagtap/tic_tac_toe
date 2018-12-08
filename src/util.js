@@ -42,4 +42,13 @@ const isValidMove = function(totalMoves,userMove) {
   return (!totalMoves.includes(userMove));
 }
 
+const makeUserMove = function(gameDetails,userMove){
+  gameDetails.board[userMove] = gameDetails.firstPlayer.symbol;
+  gameDetails.firstPlayer.moves.push(userMove);
+  gameDetails.board = gameDetails.board;
+  let index = gameDetails.remainingMoves.indexOf(userMove);
+  gameDetails.remainingMoves.splice(index,1);
+  return gameDetails;
+}
+
 module.exports = { allocateBotSymbol,isSubset,isValidMove };
