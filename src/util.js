@@ -64,4 +64,4 @@ const welcomePlayer = function() {
   console.log('\nwelcome to TIC TAC TOE\n');
 }
 
-module.exports = { allocateBotSymbol,isSubset,isValidMove };
+module.exports = { makeUserMove,makeBotMove,welcomePlayer,allocateBotSymbol,isSubset,isValidMove };
