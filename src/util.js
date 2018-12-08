@@ -51,4 +51,11 @@ const makeUserMove = function(gameDetails,userMove){
   return gameDetails;
 }
 
+const makeBotMove = function(gameDetails,botMove) {
+  gameDetails.board[botMove] = gameDetails.secondPlayer.symbol;
+  gameDetails.secondPlayer.moves.push(botMove);
+  gameDetails.board = gameDetails.board;
+  return gameDetails;
+}
+
 module.exports = { allocateBotSymbol,isSubset,isValidMove };
