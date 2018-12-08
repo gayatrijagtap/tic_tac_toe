@@ -27,3 +27,32 @@ const startGame = function( gameDetails ) {
   gameDetails.remainingMoves = [1,2,3,4,5,6,7,8,9];
   playNow(gameDetails);
 }
+
+const playNow = function(gameDetails) {
+  let totalMoves = gameDetails.firstPlayer.moves.concat(gameDetails.secondPlayer.moves);
+  let remainingAttempts = 9;
+  while(remainingAttempts >= 1) {
+    console.log(gameDetails.firstPlayer.name+"'s turn\n");
+    let userMove = getUserMove(gameDetails.firstPlayer.name);
+    if(!isValidMove(totalMoves,userMove) || (!gameDetails.remainingMoves.includes( userMove ))) {
+      console.log('invalid box!! Please choose appropriate box');
+    } else {
+      gameDetails = makeUserMove(gameDetails,userMove)
+      console.clear();
+      displayBoard(gameDetails.board);
+      hasWon(gameDetails.firstPlayer);
+      remainingAttempts--;
+      if(remainingAttempts == 0) {
+        console.log('Match Draw!!');
+        process.exit();
+      }
+      let botMove = playBot(gameDetails.remainingMoves);
+      gameDetails = makeBotMove(gameDetails,botMove);
+      console.log("bot's turn\n")
+      console.log("bot's move : "+botMove);
+      displayBoard(gameDetails.board);
+      hasWon(gameDetails.secondPlayer);
+      remainingAttempts--;
+    }
+  }
+}
